@@ -96,7 +96,7 @@ def get_browsers(verify_ssl=True):
     """
     html = get(settings.BROWSERS_STATS_PAGE, verify_ssl=verify_ssl)
     html = html.decode('utf-8')
-    html = html.split('<table class="w3-table-all notranslate">')[1]
+    html = html.split('<table class="ws-table-all notranslate">')[1]
     html = html.split('</table>')[0]
 
     pattern = r'\.asp">(.+?)<'
@@ -125,7 +125,7 @@ def get_browser_versions(browser, verify_ssl=True):
     html = html.split('<div id=\'liste\'>')[1]
     html = html.split('</div>')[0]
 
-    pattern = r'\?id=\d+\'>(.+?)</a'
+    pattern = r'id_\d+.php\'>(.+?)<\/a'
     browsers_iter = re.finditer(pattern, html, re.UNICODE)
 
     browsers = []
